@@ -2,6 +2,30 @@
   height: 600px;
   padding: 20px;
 
+  .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: #808080;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+      text-decoration: none;
+      color: #048444;
+      font-size: 22px;
+      border: 1px solid #048444;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .link:hover {
+      background-color: #04844435;
+    }
+  }
+
   .cellWithImg {
     display: flex;
     align-items: center;

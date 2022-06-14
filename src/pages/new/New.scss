@@ -19,6 +19,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: bold;
 
         svg {
           margin-left: 5px;
@@ -76,6 +77,11 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
+
+            &.disabled {
+              background-color: #03773d36;
+              cursor: not-allowed;
+            }
           }
         }
       }

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.scss";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -42,6 +42,7 @@ const Login = () => {
           <div className="col-lg-6 col-sm-12">
             <form className="loginForm">
               <h2 className="text-center text-dark">Dashboard</h2>
+              <hr />
               <div className="form-group">
                 <input
                   type="email"

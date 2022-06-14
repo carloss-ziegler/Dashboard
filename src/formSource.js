@@ -1,36 +1,31 @@
 export const userInputs = [
   {
-    id: 1,
-    label: "Username",
-    type: "text",
-    placeholder: "Digite aqui",
-  },
-  {
-    id: 2,
+    id: "displayName",
     label: "Nome e Sobrenome",
     type: "text",
     placeholder: "Digite aqui",
+    autoFocus: true,
   },
   {
-    id: 3,
+    id: "email",
     label: "E-mail",
     type: "email",
     placeholder: "example@gmail.com",
   },
   {
-    id: 4,
+    id: "phone",
     label: "Telefone",
     type: "text",
     placeholder: "+55 61 91234-5678",
   },
   {
-    id: 5,
+    id: "cpf",
     label: "CPF",
     type: "text",
     placeholder: "123456789-01",
   },
   {
-    id: 6,
+    id: "obs",
     label: "Observações",
     type: "text",
     placeholder: "",

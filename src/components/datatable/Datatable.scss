@@ -11,6 +11,13 @@
     align-items: center;
     justify-content: space-between;
 
+    .btn svg {
+      transition: 2s;
+    }
+    .btn:hover svg {
+      transform: rotate(-360deg);
+    }
+
     .link {
       text-decoration: none;
       color: #048444;

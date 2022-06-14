@@ -47,7 +47,8 @@ const Navbar = () => {
           </div>
           <div className="item">
             <button
-              className="btn btn-outline-danger"
+              title="Sair"
+              className="btn btn-outline-none"
               onClick={() => {
                 localStorage.removeItem("user");
                 toast.info("Usuário desconectado!");

@@ -1,9 +1,9 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import "./Datatable.scss";
-import { userColumns, userRows } from "../../DataTableSource";
+import { userColumns } from "../../DataTableSource";
 import { Link } from "react-router-dom";
-import { collection, collections, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import CachedIcon from "@mui/icons-material/Cached";
 
@@ -56,7 +56,11 @@ const Datatable = () => {
         <Link to="/users/new" className="link">
           Cadastrar
         </Link>
-        <button className="btn btn-info" title="Recarregar tabela">
+        <button
+          className="btn btn-info"
+          title="Recarregar tabela"
+          onClick={() => window.location.reload()}
+        >
           <CachedIcon />
         </button>
       </div>

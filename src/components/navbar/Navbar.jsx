@@ -6,8 +6,12 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -40,6 +44,18 @@ const Navbar = () => {
               alt="avatar"
               className="avatar"
             />
+          </div>
+          <div className="item">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => {
+                localStorage.removeItem("user");
+                toast.info("Usuário desconectado!");
+                navigate("/login");
+              }}
+            >
+              <LogoutIcon className="icon" />
+            </button>
           </div>
         </div>
       </div>

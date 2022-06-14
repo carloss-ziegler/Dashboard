@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./New.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-
+import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../firebase";
@@ -99,7 +98,7 @@ const New = ({ inputs, title, icon }) => {
             <form>
               <div className="formInput">
                 <label htmlFor="file">
-                  Imagem: <DriveFolderUploadOutlinedIcon className="icon" />
+                  Imagem: <DriveFolderUploadIcon className="icon" />
                 </label>
                 <input
                   type="file"

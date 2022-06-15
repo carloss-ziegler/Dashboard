@@ -54,8 +54,8 @@ const New = ({ inputs, title, icon }) => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setData((prev) => ({ ...prev, img: downloadURL }));
             setLoading(false);
+            setData((prev) => ({ ...prev, img: downloadURL }));
           });
         }
       );

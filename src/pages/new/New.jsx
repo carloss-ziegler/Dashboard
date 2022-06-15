@@ -14,6 +14,7 @@ const New = ({ inputs, title, icon }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPer] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -35,6 +36,7 @@ const New = ({ inputs, title, icon }) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
+          setLoading(true);
           setPer(progress);
           switch (snapshot.state) {
             case "paused":
@@ -53,6 +55,7 @@ const New = ({ inputs, title, icon }) => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setData((prev) => ({ ...prev, img: downloadURL }));
+            setLoading(false);
           });
         }
       );
@@ -92,13 +95,17 @@ const New = ({ inputs, title, icon }) => {
             <img
               src={file ? URL.createObjectURL(file) : "../pngwing.com.png"}
               alt="Img"
+              className="shadow"
             />
+            {loading && (
+              <div className="spinner-border text-primary" role="status" />
+            )}
           </div>
           <div className="right">
-            <form>
+            <form className="shadow p-3">
               <div className="formInput">
                 <label htmlFor="file">
-                  Imagem: <DriveFolderUploadIcon className="icon" />
+                  Selecionar imagem: <DriveFolderUploadIcon className="icon" />
                 </label>
                 <input
                   type="file"

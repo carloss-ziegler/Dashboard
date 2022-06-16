@@ -92,13 +92,14 @@ const New = ({ inputs, title, icon }) => {
         </div>
         <div className="bottom">
           <div className="left">
-            <img
-              src={file ? URL.createObjectURL(file) : "../pngwing.com.png"}
-              alt="Img"
-              className="shadow"
-            />
-            {loading && (
-              <div className="spinner-border text-primary" role="status" />
+            {loading ? (
+              <div className="spinner-grow text-dark" role="status" />
+            ) : (
+              <img
+                src={file ? URL.createObjectURL(file) : "../pngwing.com.png"}
+                alt="Img"
+                className="shadow"
+              />
             )}
           </div>
           <div className="right">
@@ -133,6 +134,13 @@ const New = ({ inputs, title, icon }) => {
                 type="submit"
                 onClick={createUser}
               >
+                {loading && (
+                  <span
+                    className="spinner-border mr-2 spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                )}
                 Enviar
               </button>
             </form>

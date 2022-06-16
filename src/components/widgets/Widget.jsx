@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import InventoryIcon from "@mui/icons-material/Inventory";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
+import { collection, where, query, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Widget = ({ type }) => {
+  const [amount, setAmount] = useState(null);
+  const [diff, setDiff] = useState(null);
   let data;
-
-  //temporario
-
-  const amount = 4860;
-  const diff = 20;
 
   switch (type) {
     case "user":
@@ -20,11 +21,12 @@ const Widget = ({ type }) => {
         title: "Clientes",
         isMoney: false,
         link: "Ver todos",
+        query: "clientes",
         icon: (
           <PersonOutlineIcon
             className="icon"
             style={{
-              color: "crimson",
+              color: "#E91034",
               backgroundColor: "rgba(255, 0, 0, 0.2)",
             }}
           />
@@ -40,7 +42,7 @@ const Widget = ({ type }) => {
           <ShoppingCartOutlinedIcon
             className="icon"
             style={{
-              color: "goldenrod",
+              color: "#E9C125",
               backgroundColor: "rgba(128, 165, 32, 0.2)",
             }}
           />
@@ -63,13 +65,13 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "product":
       data = {
-        title: "Balanço",
-        isMoney: true,
+        title: "Produtos",
+        query: "produtos",
         link: "Ver detalhes",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <InventoryIcon
             className="icon"
             style={{
               color: "purple",
@@ -83,6 +85,36 @@ const Widget = ({ type }) => {
       break;
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const today = new Date();
+      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+
+      const lastMonthQuery = query(
+        collection(db, data.query),
+        where("timeStamp", "<=", today),
+        where("timeStamp", ">", lastMonth)
+      );
+      const prevMonthQuery = query(
+        collection(db, data.query),
+        where("timeStamp", "<=", lastMonth),
+        where("timeStamp", ">", prevMonth)
+      );
+
+      const lastMonthData = await getDocs(lastMonthQuery);
+      const prevMonthData = await getDocs(prevMonthQuery);
+
+      setAmount(lastMonthData.docs.length);
+      setDiff(
+        ((lastMonthData.docs.length - prevMonthData.docs.length) /
+          prevMonthData.docs.length) *
+          100
+      );
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="widget">
       <div className="left">
@@ -93,8 +125,8 @@ const Widget = ({ type }) => {
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
+        <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>
+          {diff < 0 ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
           {diff} %
         </div>
         {data.icon}

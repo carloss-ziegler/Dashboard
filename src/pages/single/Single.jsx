@@ -5,7 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 
-const Single = () => {
+const Single = ({ data }) => {
   return (
     <div className="single">
       <Sidebar />
@@ -16,11 +16,7 @@ const Single = () => {
             <div className="editButton">Editar</div>
             <h1 className="title">Informações</h1>
             <div className="item">
-              <img
-                src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
-                alt="Avatar"
-                className="itemImg"
-              />
+              <img src="../foto3.png" alt="Avatar" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">John</h1>
                 <div className="detailItem">

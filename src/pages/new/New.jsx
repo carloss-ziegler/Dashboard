@@ -96,7 +96,7 @@ const New = ({ inputs, title, icon }) => {
               <div className="spinner-grow text-dark" role="status" />
             ) : (
               <img
-                src={file ? URL.createObjectURL(file) : "../pngwing.com.png"}
+                src={file ? URL.createObjectURL(file) : "../foto2.png"}
                 alt="Img"
                 className="shadow"
               />

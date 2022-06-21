@@ -63,7 +63,7 @@ const List = () => {
   ];
 
   return (
-    <TableContainer component={Paper} className="table">
+    <TableContainer component={Paper} className="table shadow-lg">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

@@ -9,7 +9,6 @@ import {
   Route,
   Routes,
   Navigate,
-  useParams,
 } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import AddBoxIcon from "@mui/icons-material/AddBox";
@@ -20,11 +19,11 @@ import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
-  const { userId } = useParams();
   const { currentUser } = useContext(AuthContext);
   const RequiredAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
   };
+
   return (
     <div className="App">
       <>
@@ -55,7 +54,7 @@ function App() {
                 path=":userId"
                 element={
                   <RequiredAuth>
-                    <Single id={userId} />
+                    <Single />
                   </RequiredAuth>
                 }
               />

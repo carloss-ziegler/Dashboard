@@ -7,6 +7,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../firebase";
 
+// import { toast } from "react-toastify";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +24,7 @@ const New = ({ inputs, title, icon }) => {
 
     setData({ ...data, [id]: value });
   };
+  console.log(data);
 
   useEffect(() => {
     const uploadFile = () => {
@@ -70,6 +72,7 @@ const New = ({ inputs, title, icon }) => {
         ...data,
         timeStamp: serverTimestamp(),
       });
+
       toast.success("Cliente adicionado com sucesso!", {
         theme: "dark",
       });

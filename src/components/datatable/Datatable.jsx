@@ -2,8 +2,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import "./Datatable.scss";
 import { userColumns } from "../../DataTableSource";
-import { Link } from "react-router-dom";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { Link, useParams } from "react-router-dom";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import CachedIcon from "@mui/icons-material/Cached";
 import { toast } from "react-toastify";
@@ -55,7 +61,7 @@ const Datatable = () => {
               to={`/users/${params.row.id}`}
               style={{ textDecoration: "none" }}
             >
-              <div className="viewButton">Ver</div>
+              <button className="viewButton">Ver</button>
             </Link>
             <div
               className="deleteButton"

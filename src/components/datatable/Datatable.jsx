@@ -3,25 +3,19 @@ import React, { useEffect, useState } from "react";
 import "./Datatable.scss";
 import { userColumns } from "../../DataTableSource";
 import { Link, useParams } from "react-router-dom";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-} from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import CachedIcon from "@mui/icons-material/Cached";
 import { toast } from "react-toastify";
 
-const Datatable = () => {
+const Datatable = ({ table, title, columns, page }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       let list = [];
       try {
-        const querySnapshot = await getDocs(collection(db, "clientes"));
+        const querySnapshot = await getDocs(collection(db, table));
         querySnapshot.forEach((doc) => {
           list.push({ id: doc.id, ...doc.data() });
         });
@@ -37,7 +31,7 @@ const Datatable = () => {
   const handleDelete = async (id) => {
     try {
       if (window.confirm("Deseja realmente excluir o cadastro?")) {
-        await deleteDoc(doc(db, "clientes", id));
+        await deleteDoc(doc(db, table, id));
 
         toast.info("Deletado com sucesso!", {
           theme: "dark",
@@ -77,8 +71,8 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        <Link to="/users/new" className="link shadow">
-          Cadastrar
+        <Link to={`/${page}/new`} className="link shadow">
+          {title}
         </Link>
         <button
           className="btn btn-info shadow-sm"
@@ -91,7 +85,7 @@ const Datatable = () => {
       <DataGrid
         className="shadow border border-dark"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={columns.concat(actionColumn)}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection

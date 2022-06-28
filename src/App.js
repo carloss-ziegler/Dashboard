@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/home/Home";
 import List from "./pages/list/List";
 import Login from "./pages/login/Login";
@@ -11,6 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
+import { userColumns, productColumns } from "./DataTableSource";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,7 +46,7 @@ function App() {
                 index
                 element={
                   <RequiredAuth>
-                    <List />
+                    <List column={userColumns} table="clientes" page="users" />
                   </RequiredAuth>
                 }
               />
@@ -76,7 +76,11 @@ function App() {
                 index
                 element={
                   <RequiredAuth>
-                    <List />
+                    <List
+                      column={productColumns}
+                      table="produtos"
+                      page="products"
+                    />
                   </RequiredAuth>
                 }
               />

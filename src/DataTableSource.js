@@ -34,3 +34,44 @@ export const userColumns = [
     width: 160,
   },
 ];
+export const productColumns = [
+  { field: "productId", headerName: "ID", width: 70 },
+  // {
+  //   field: "product",
+  //   headerName: "Foto",
+  //   width: 90,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className="cellWithImg">
+  //         <img className="cellImg" src={params.row.img} alt="Foto" />
+  //       </div>
+  //     );
+  //   },
+  // },
+  {
+    field: "productName",
+    headerName: "Nome",
+    width: 230,
+  },
+  {
+    field: "price",
+    headerName: "Preço",
+    width: 160,
+  },
+
+  {
+    field: "desc",
+    headerName: "Descrição",
+    width: 250,
+  },
+  // {
+  //   field: "timeStamp",
+  //   headerName: "Adicionado em",
+  //   width: 160,
+  // },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+  },
+];

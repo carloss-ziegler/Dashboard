@@ -127,11 +127,25 @@ const New = ({ inputs, title, icon }) => {
                       id={input.id}
                       type={input.type}
                       placeholder={input.placeholder}
+                      name={input.name}
+                      value={input.value}
                       onChange={handleInput}
                     />
                   </div>
                 );
               })}
+              <div className="formInput radio">
+                <label htmlFor="active">Ativo</label>
+                <input type="radio" name="active" id="status" />
+              </div>
+              <div className="formInput radio">
+                <label htmlFor="pending">Pendente</label>
+                <input type="radio" name="pending" id="status" />
+              </div>
+              <div className="formInput radio">
+                <label htmlFor="sold">Vendido</label>
+                <input type="radio" name="sold" id="status" />
+              </div>
               <button
                 disabled={per !== null && per < 100}
                 type="submit"

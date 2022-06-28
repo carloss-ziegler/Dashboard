@@ -3,14 +3,20 @@ import "./List.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Datatable from "../../components/datatable/Datatable";
+import actionColumn from "../../components/datatable/Datatable";
 
-const List = () => {
+const List = ({ column, table, page }) => {
   return (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable />
+        <Datatable
+          title={"Cadastrar"}
+          columns={column.concat(actionColumn)}
+          table={table}
+          page={page}
+        />
       </div>
     </div>
   );

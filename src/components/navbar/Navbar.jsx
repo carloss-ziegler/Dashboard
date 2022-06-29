@@ -50,9 +50,11 @@ const Navbar = () => {
               title="Sair"
               className="btn btn-outline-none"
               onClick={() => {
-                localStorage.removeItem("user");
-                toast.info("Usuário desconectado!");
-                navigate("/login");
+                if (window.confirm("Deseja se desconectar?")) {
+                  localStorage.removeItem("user");
+                  toast.info("Usuário desconectado!");
+                  navigate("/login");
+                }
               }}
             >
               <LogoutIcon className="icon" />

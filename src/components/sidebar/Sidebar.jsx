@@ -12,9 +12,11 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   return (
     <div className="sidebar">
       <div className="top">
@@ -86,7 +88,19 @@ const Sidebar = () => {
           </li>
           <li>
             <LogoutIcon className="icon" />
-            <span>Sair</span>
+            <button
+              title="Sair"
+              className="btn btn-outline-none"
+              onClick={() => {
+                if (window.confirm("Deseja se desconectar?")) {
+                  localStorage.removeItem("user");
+                  toast.info("Usuário desconectado!");
+                  navigate("/login");
+                }
+              }}
+            >
+              Sair
+            </button>
           </li>
         </ul>
       </div>

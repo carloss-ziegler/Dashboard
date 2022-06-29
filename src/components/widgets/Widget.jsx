@@ -9,6 +9,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { collection, where, query, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   const [amount, setAmount] = useState(null);
@@ -21,6 +22,7 @@ const Widget = ({ type }) => {
         title: "Clientes",
         isMoney: false,
         link: "Ver todos",
+        page: "users",
         query: "clientes",
         icon: (
           <PersonOutlineIcon
@@ -38,6 +40,7 @@ const Widget = ({ type }) => {
         title: "Pedidos",
         isMoney: false,
         link: "Ver todos",
+        page: "orders",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -69,6 +72,7 @@ const Widget = ({ type }) => {
       data = {
         title: "Produtos",
         query: "produtos",
+        page: "products",
         link: "Ver detalhes",
         icon: (
           <InventoryIcon
@@ -122,7 +126,9 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "R$"} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={`/${data.page}`} className="link">
+          {data.link}
+        </Link>
       </div>
       <div className="right">
         <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>

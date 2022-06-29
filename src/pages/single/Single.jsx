@@ -36,7 +36,7 @@ const Single = () => {
             <h1 className="title">Informações</h1>
 
             <div className="item">
-              <img src={user.img} alt="Avatar" className="itemImg" />
+              {/* <img src={user.img} alt="Avatar" className="itemImg" /> */}
               <div className="details">
                 <h1 className="itemTitle">{user.displayName}</h1>
                 <div className="detailItem">

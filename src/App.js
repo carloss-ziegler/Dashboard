@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
+import Orders from "./pages/orders/Orders";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -31,6 +32,7 @@ function App() {
       </>
       <Router>
         <Routes>
+          <Route path="/orders" element={<Orders />} />
           <Route path="/">
             <Route path="login" element={<Login />} />
             <Route
@@ -54,7 +56,7 @@ function App() {
                 path=":userId"
                 element={
                   <RequiredAuth>
-                    <Single />
+                    <Single paramId="userId" />
                   </RequiredAuth>
                 }
               />
@@ -66,6 +68,8 @@ function App() {
                       inputs={userInputs}
                       title="Realizar Cadastro"
                       icon={<PersonAddAltIcon />}
+                      table="clientes"
+                      page="users"
                     />
                   </RequiredAuth>
                 }
@@ -88,7 +92,7 @@ function App() {
                 path=":productId"
                 element={
                   <RequiredAuth>
-                    <Single />
+                    <Single paramId="productId" />
                   </RequiredAuth>
                 }
               />
@@ -100,6 +104,8 @@ function App() {
                       inputs={productInputs}
                       title="Cadastrar Produto"
                       icon={<AddBoxIcon />}
+                      table="produtos"
+                      page="products"
                     />
                   </RequiredAuth>
                 }

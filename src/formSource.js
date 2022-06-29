@@ -34,12 +34,6 @@ export const userInputs = [
 
 export const productInputs = [
   {
-    id: "productId",
-    label: "ID",
-    type: "text",
-    placeholder: "",
-  },
-  {
     id: "productName",
     label: "Nome",
     type: "text",
@@ -57,17 +51,11 @@ export const productInputs = [
     type: "text",
     placeholder: "Qtd. em estoque...",
   },
+
   {
-    id: "timeStamp",
-    label: "Data",
-    type: "date",
-    placeholder: "",
+    id: "status",
+    label: "Status",
+    type: "text",
+    placeholder: "Em andamento, Terminado, Vendido",
   },
-  // {
-  //   id: "status",
-  //   label: "Status",
-  //   type: "radio",
-  //   name: "active",
-  //   value: "Ativo",
-  // },
 ];

@@ -11,7 +11,7 @@ import { db, storage } from "../../firebase";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const New = ({ inputs, title, icon }) => {
+const New = ({ inputs, title, icon, table, page }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPer] = useState(null);
@@ -68,15 +68,15 @@ const New = ({ inputs, title, icon }) => {
   const createUser = async (e) => {
     e.preventDefault();
     try {
-      const res = await addDoc(collection(db, "clientes"), {
+      const res = await addDoc(collection(db, table), {
         ...data,
         timeStamp: serverTimestamp(),
       });
 
-      toast.success("Cliente adicionado com sucesso!", {
+      toast.success("Cadastro adicionado com sucesso!", {
         theme: "dark",
       });
-      navigate("/users");
+      navigate(`/${page}`);
     } catch (err) {
       console.log(err);
     }
@@ -127,25 +127,12 @@ const New = ({ inputs, title, icon }) => {
                       id={input.id}
                       type={input.type}
                       placeholder={input.placeholder}
-                      name={input.name}
-                      value={input.value}
                       onChange={handleInput}
                     />
                   </div>
                 );
               })}
-              <div className="formInput radio">
-                <label htmlFor="active">Ativo</label>
-                <input type="radio" name="active" id="status" />
-              </div>
-              <div className="formInput radio">
-                <label htmlFor="pending">Pendente</label>
-                <input type="radio" name="pending" id="status" />
-              </div>
-              <div className="formInput radio">
-                <label htmlFor="sold">Vendido</label>
-                <input type="radio" name="sold" id="status" />
-              </div>
+
               <button
                 disabled={per !== null && per < 100}
                 type="submit"

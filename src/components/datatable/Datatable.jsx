@@ -52,7 +52,7 @@ const Datatable = ({ table, title, columns, page }) => {
         return (
           <div className="cellAction">
             <Link
-              to={`/users/${params.row.id}`}
+              to={`/${page}/${params.row.id}`}
               style={{ textDecoration: "none" }}
             >
               <button className="viewButton">Ver</button>

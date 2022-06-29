@@ -48,8 +48,10 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <CreditCardIcon className="icon" />
-            <span>Pedidos</span>
+            <Link to="/orders" style={{ textDecoration: "none" }}>
+              <CreditCardIcon className="icon" />
+              <span>Pedidos</span>
+            </Link>
           </li>
           <li>
             <LocalShippingIcon className="icon" />

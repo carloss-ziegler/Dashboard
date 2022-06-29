@@ -40,7 +40,7 @@
     .cellImg {
       width: 48px;
       height: 48px;
-      border-radius: 50%;
+      border-radius: 8px;
       object-fit: cover;
       margin-right: 20px;
     }
@@ -50,15 +50,15 @@
     padding: 5px;
     border-radius: 5px;
 
-    &.Active {
+    &.Ativo {
       color: #048444;
       background-color: rgba(0, 128, 0, 0.05);
     }
-    &.Passive {
+    &.Vendido {
       color: #880000;
       background-color: rgba(255, 0, 0, 0.05);
     }
-    &.Pending {
+    &.Finalizado {
       color: #daa520;
       background-color: rgba(255, 217, 0, 0.05);
     }

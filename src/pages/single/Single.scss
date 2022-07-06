@@ -29,6 +29,7 @@
           cursor: pointer;
           border-radius: 0px 0px 0px 5px;
           outline: none;
+          border: none;
         }
 
         .item {
@@ -43,7 +44,12 @@
           }
 
           .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             .itemTitle {
+              font-size: 16px;
               margin-bottom: 10px;
               color: #808080;
             }
@@ -59,7 +65,7 @@
               }
 
               .itemValue {
-                font-weight: 300;
+                font-weight: 400;
               }
             }
           }
@@ -80,7 +86,7 @@
     }
 
     .title {
-      font-size: 16px;
+      font-size: 18px;
       color: #808080;
       margin-bottom: 20px;
       margin: 10px 20px;

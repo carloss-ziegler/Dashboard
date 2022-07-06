@@ -34,25 +34,25 @@ const Single = () => {
           <div className="left">
             <button className="editButton">Editar</button>
             <h1 className="title">Informações</h1>
-
+            <hr />
             <div className="item">
               {/* <img src={user.img} alt="Avatar" className="itemImg" /> */}
               <div className="details">
                 <h1 className="itemTitle">{user.displayName}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
+                  {/* <span className="itemKey">Email:</span> */}
                   <span className="itemValue">{user.email}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Telefone:</span>
+                  {/* <span className="itemKey">Telefone:</span> */}
                   <span className="itemValue">{user.phone}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">CPF:</span>
+                  {/* <span className="itemKey">CPF:</span> */}
                   <span className="itemValue">{user.cpf}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Observações:</span>
+                  {/* <span className="itemKey">Observações:</span> */}
                   <span className="itemValue">{user.obs}</span>
                 </div>
               </div>

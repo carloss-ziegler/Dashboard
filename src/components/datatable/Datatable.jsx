@@ -30,7 +30,7 @@ const Datatable = ({ table, title, columns, page }) => {
 
   const handleDelete = async (id) => {
     try {
-      if (window.confirm("Deseja realmente excluir o cadastro?")) {
+      if (window.confirm(`Deseja realmente excluir o cadastro?`)) {
         await deleteDoc(doc(db, table, id));
 
         toast.info("Deletado com sucesso!", {
@@ -89,6 +89,7 @@ const Datatable = ({ table, title, columns, page }) => {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        autoHeight={true}
       />
     </div>
   );

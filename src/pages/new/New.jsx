@@ -25,6 +25,7 @@ const New = ({ inputs, title, icon, table, page }) => {
     setData({ ...data, [id]: value });
   };
   console.log(data);
+  console.log(per);
 
   useEffect(() => {
     const uploadFile = () => {

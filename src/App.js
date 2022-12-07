@@ -29,91 +29,96 @@ function App() {
     <div className="App">
       <>
         <ToastContainer autoClose={2700} />
+
+        <Router>
+          <Routes>
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/">
+              <Route path="login" element={<Login />} />
+              <Route
+                index
+                element={
+                  <RequiredAuth>
+                    <Home />
+                  </RequiredAuth>
+                }
+              />
+              <Route path="users">
+                <Route
+                  index
+                  element={
+                    <RequiredAuth>
+                      <List
+                        column={userColumns}
+                        table="clientes"
+                        page="users"
+                      />
+                    </RequiredAuth>
+                  }
+                />
+                <Route
+                  path=":userId"
+                  element={
+                    <RequiredAuth>
+                      <Single paramId="userId" />
+                    </RequiredAuth>
+                  }
+                />
+                <Route
+                  path="new"
+                  element={
+                    <RequiredAuth>
+                      <New
+                        inputs={userInputs}
+                        title="Realizar Cadastro"
+                        icon={<PersonAddAltIcon />}
+                        table="clientes"
+                        page="users"
+                      />
+                    </RequiredAuth>
+                  }
+                />
+              </Route>
+              <Route path="products">
+                <Route
+                  index
+                  element={
+                    <RequiredAuth>
+                      <List
+                        column={productColumns}
+                        table="produtos"
+                        page="products"
+                      />
+                    </RequiredAuth>
+                  }
+                />
+                <Route
+                  path=":productId"
+                  element={
+                    <RequiredAuth>
+                      <Single paramId="productId" />
+                    </RequiredAuth>
+                  }
+                />
+                <Route
+                  path="new"
+                  element={
+                    <RequiredAuth>
+                      <New
+                        inputs={productInputs}
+                        title="Cadastrar Produto"
+                        icon={<AddBoxIcon />}
+                        table="produtos"
+                        page="products"
+                      />
+                    </RequiredAuth>
+                  }
+                />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
       </>
-      <Router>
-        <Routes>
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/">
-            <Route path="login" element={<Login />} />
-            <Route
-              index
-              element={
-                <RequiredAuth>
-                  <Home />
-                </RequiredAuth>
-              }
-            />
-            <Route path="users">
-              <Route
-                index
-                element={
-                  <RequiredAuth>
-                    <List column={userColumns} table="clientes" page="users" />
-                  </RequiredAuth>
-                }
-              />
-              <Route
-                path=":userId"
-                element={
-                  <RequiredAuth>
-                    <Single paramId="userId" />
-                  </RequiredAuth>
-                }
-              />
-              <Route
-                path="new"
-                element={
-                  <RequiredAuth>
-                    <New
-                      inputs={userInputs}
-                      title="Realizar Cadastro"
-                      icon={<PersonAddAltIcon />}
-                      table="clientes"
-                      page="users"
-                    />
-                  </RequiredAuth>
-                }
-              />
-            </Route>
-            <Route path="products">
-              <Route
-                index
-                element={
-                  <RequiredAuth>
-                    <List
-                      column={productColumns}
-                      table="produtos"
-                      page="products"
-                    />
-                  </RequiredAuth>
-                }
-              />
-              <Route
-                path=":productId"
-                element={
-                  <RequiredAuth>
-                    <Single paramId="productId" />
-                  </RequiredAuth>
-                }
-              />
-              <Route
-                path="new"
-                element={
-                  <RequiredAuth>
-                    <New
-                      inputs={productInputs}
-                      title="Cadastrar Produto"
-                      icon={<AddBoxIcon />}
-                      table="produtos"
-                      page="products"
-                    />
-                  </RequiredAuth>
-                }
-              />
-            </Route>
-          </Route>
-        </Routes>
-      </Router>
     </div>
   );
 }

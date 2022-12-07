@@ -1,9 +1,9 @@
 export const userInputs = [
   {
     id: "displayName",
-    label: "Nome e Sobrenome",
+    label: "Nome",
     type: "text",
-    placeholder: "Digite aqui",
+    placeholder: "Digite o nome",
     autoFocus: true,
   },
   {
@@ -24,6 +24,7 @@ export const userInputs = [
     type: "text",
     placeholder: "123456789-01",
   },
+
   {
     id: "obs",
     label: "Observações",
@@ -52,10 +53,10 @@ export const productInputs = [
     placeholder: "Qtd. em estoque...",
   },
 
-  {
-    id: "status",
-    label: "Status",
-    type: "text",
-    placeholder: "Em andamento, Terminado, Vendido",
-  },
+  // {
+  //   id: "status",
+  //   label: "Status",
+  //   type: "text",
+  //   placeholder: "Em andamento, Terminado, Vendido",
+  // },
 ];

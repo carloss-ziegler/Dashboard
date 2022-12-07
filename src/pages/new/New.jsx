@@ -69,7 +69,7 @@ const New = ({ inputs, title, icon, table, page }) => {
   const createUser = async (e) => {
     e.preventDefault();
     try {
-      const res = await addDoc(collection(db, table), {
+      await addDoc(collection(db, table), {
         ...data,
         timeStamp: serverTimestamp(),
       });

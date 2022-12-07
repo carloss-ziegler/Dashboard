@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
-import "./Login.scss";
+// import "./Login.scss";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import LockIcon from "@mui/icons-material/Lock";
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -12,71 +14,82 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch({ type: "LOGIN", payload: user });
-        toast.success("Conectado!", {
-          theme: "dark",
+  async function handleLogin() {
+    if (email && password) {
+      await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          dispatch({ type: "LOGIN", payload: user });
+          toast.success("Conectado!", {
+            theme: "dark",
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setError(true);
         });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setError(true);
-      });
-  };
+    }
+  }
 
   const { dispatch } = useContext(AuthContext);
 
   return (
-    <div className="login loginBody">
-      <div className="loginBox">
-        <div className="row">
-          <div className="col-lg-6 col-sm-6 imageBox">
-            <img src="../dashboard.jpg" alt="pictur" className="imagemm" />
+    <div className="fixed bg-[#e5e5e5] flex h-full w-full items-center justify-center">
+      <div className="flex flex-row w-[830px] p-4 bg-[#f5f5f5] shadow overflow-hidden rounded-lg">
+        {/* Left */}
+        <div className="flex-1">
+          <img
+            src={require("../../assets/csa.jpg")}
+            alt=""
+            className="object-cover rounded w-[400px] h-[400px]"
+          />
+        </div>
+
+        {/* Right */}
+        <div className="flex-1 bg-[#f5f5f5] p-4">
+          <h1 className="text-center text-2xl text-blue-600 font-semibold">
+            Entrar no sistema
+          </h1>
+
+          <div className="mt-10 space-y-1 flex flex-col">
+            <span className="text-gray-600">Email</span>
+            <div className="flex items-center space-x-2 py-2 px-3 border border-[#cccccccc] bg-white rounded">
+              <EmailRoundedIcon className="text-[#9e9e9e]" />
+              <input
+                className="w-full outline-none"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
           </div>
-          <div className="col-lg-6 col-sm-12">
-            <form className="loginForm">
-              <h2 className="text-center text-dark">Dashboard</h2>
-              <hr />
-              <div className="form-group">
-                <input
-                  type="email"
-                  placeholder="example@gmail.com"
-                  className="form-control"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  placeholder="******"
-                  className="form-control"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="row">
-                <div className="col-lg-12">
-                  <button
-                    className="btn btn-custom-submit"
-                    onClick={handleLogin}
-                  >
-                    Entrar
-                  </button>
-                  {error &&
-                    toast.error("Email ou senha incorretos!", {
-                      theme: "dark",
-                    })}
-                </div>
-              </div>
-            </form>
+
+          <div className="mt-3 space-y-1 flex flex-col">
+            <span className="text-gray-600">Senha</span>
+            <div className="flex items-center space-x-2 py-2 px-3 border border-[#cccccccc] bg-white rounded">
+              <LockIcon className="text-[#9e9e9e]" />
+              <input
+                className="w-full outline-none"
+                type="password"
+                placeholder="Email"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              onClick={handleLogin}
+              className="mt-10 bg-blue-500 py-2 w-full flex items-center justify-center text-white font-semibold rounded hover:opacity-90"
+            >
+              Entrar
+            </button>
           </div>
         </div>
-        <span className="outshape"></span>
       </div>
     </div>
   );

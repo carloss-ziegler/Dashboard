@@ -50,17 +50,25 @@
     padding: 5px;
     border-radius: 5px;
 
-    &.Ativo {
+    &.Finalizado {
       color: #048444;
       background-color: rgba(0, 128, 0, 0.05);
     }
-    &.Vendido {
-      color: #880000;
-      background-color: rgba(255, 0, 0, 0.05);
+    &.Retirada {
+      color: #1c93fc;
+      background-color: #1c93fc23;
     }
-    &.Finalizado {
+    &.Pendente {
       color: #daa520;
-      background-color: rgba(255, 217, 0, 0.05);
+      background-color: rgba(255, 217, 0, 0.308);
+    }
+    &.Entrega {
+      color: #880000;
+      background-color: rgba(255, 0, 0, 0.247);
+    }
+    &.Cancelado {
+      color: #000;
+      background-color: #04040485;
     }
   }
 
@@ -70,6 +78,10 @@
     gap: 15px;
 
     .viewButton {
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       padding: 2px 5px;
       border-radius: 5px;
@@ -77,6 +89,10 @@
       border: 1px solid #1c93fc67;
     }
     .deleteButton {
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       padding: 2px 5px;
       border-radius: 5px;

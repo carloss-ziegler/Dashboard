@@ -7,6 +7,8 @@ import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import CachedIcon from "@mui/icons-material/Cached";
 import { toast } from "react-toastify";
+import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Datatable = ({ table, title, columns, page }) => {
   const [data, setData] = useState([]);
@@ -47,21 +49,24 @@ const Datatable = ({ table, title, columns, page }) => {
     {
       field: "action",
       headerName: "Ação",
-      width: 150,
+      width: 180,
       renderCell: (params) => {
         return (
-          <div className="cellAction">
+          <div className="flex items-center space-x-2">
             <Link
               to={`/${page}/${params.row.id}`}
               style={{ textDecoration: "none" }}
             >
-              <button className="viewButton">Ver</button>
+              <button className="flex items-center justify-center font-semibold cursor-pointer py-1 px-2 rounded text-[#1c94fc] border border-[#1c93fc67] hover:opacity-80">
+                Ver <VisibilityIcon />
+              </button>
             </Link>
+
             <div
-              className="deleteButton"
+              className="flex items-center justify-center font-semibold cursor-pointer py-1 px-2 rounded text-[#e91034] border border-[#e9103481] hover:opacity-80"
               onClick={() => handleDelete(params.row.id)}
             >
-              Deletar
+              Deletar <DeleteSweepIcon />
             </div>
           </div>
         );
@@ -69,13 +74,16 @@ const Datatable = ({ table, title, columns, page }) => {
     },
   ];
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
-        <Link to={`/${page}/new`} className="link shadow">
+    <div className="h-[400px] p-5">
+      <div className="w-full text-lg text-[#808080] mb-3 flex items-center justify-between shadow p-2">
+        <Link
+          to={`/${page}/new`}
+          className="text-decoration-none text-white font-semibold bg-[#048444d5] py-1 px-2 rounded"
+        >
           {title}
         </Link>
+
         <button
-          className="btn btn-info shadow-sm"
           title="Recarregar tabela"
           onClick={() => window.location.reload()}
         >
@@ -89,7 +97,7 @@ const Datatable = ({ table, title, columns, page }) => {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-        autoHeight={true}
+        // autoHeight={true}
       />
     </div>
   );

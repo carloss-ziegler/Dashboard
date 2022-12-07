@@ -3,8 +3,6 @@ import "./Sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import StoreIcon from "@mui/icons-material/Store";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamIcon from "@mui/icons-material/SettingsSystemDaydream";
@@ -22,7 +20,7 @@ const Sidebar = () => {
       <div className="top">
         <div className="">
           <Link to="/">
-            <img src="../Logo.jpg" alt="Logo" className="logo" />
+            <span className="text-green-600 font-bold">Casa Santo André</span>
           </Link>
         </div>
       </div>
@@ -48,16 +46,6 @@ const Sidebar = () => {
               <StoreIcon className="icon" />
               <span>Produtos</span>
             </Link>
-          </li>
-          <li>
-            <Link to="/orders" style={{ textDecoration: "none" }}>
-              <CreditCardIcon className="icon" />
-              <span>Pedidos</span>
-            </Link>
-          </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
           </li>
           <p className="title">Útil</p>
           <li>

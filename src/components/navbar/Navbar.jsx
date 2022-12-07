@@ -13,39 +13,41 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="navbar">
-      <div className="wrapper">
-        <div className="search">
-          <input type="text" placeholder="Procurar..." />
-          <SearchIcon />
+    <div className="h-12 border-b-[0.5px] border-[#dbdbdb] flex items-center justify-end">
+      <div className="w-full flex p-2 items-center justify-between">
+        <div className="flex items-center space-x-1 border border-[#cccccccc] rounded">
+          <SearchIcon className="text-gray-600" />
+          <input
+            className="outline-none px-2 py-1  rounded"
+            type="text"
+            placeholder="Procurar..."
+          />
         </div>
-        <div className="items">
-          <div className="item">
+        <div className="flex items-center">
+          <div className="mr-10">
             <LanguageIcon className="icon" />
             <span>Português</span>
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <DarkModeIcon className="icon" />
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <NotificationsNoneIcon className="icon" />
-            <div className="counter">1</div>
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <ChatBubbleOutlineIcon className="icon" />
-            <div className="counter">6</div>
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <FormatListBulletedIcon className="icon" />
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <img
-              src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"
+              src={require("../../assets/csa.jpg")}
               alt="avatar"
-              className="avatar"
+              className="w-8 h-8 object-cover"
             />
           </div>
-          <div className="item">
+          <div className="mr-10 cursor-pointer">
             <button
               title="Sair"
               className="btn btn-outline-none"
